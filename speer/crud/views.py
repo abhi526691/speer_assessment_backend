@@ -1,40 +1,32 @@
 import os
 import uuid
 from datetime import datetime
-from django.shortcuts import render
-from rest_framework import routers, serializers, viewsets
 from rest_framework.views import APIView
-from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth.models import User
 from dotenv import load_dotenv
 from pymongo import MongoClient
-from elasticsearch import Elasticsearch
+# from elasticsearch import Elasticsearch
 
 load_dotenv()
-username = os.environ.get("username")
-password = os.environ.get("password")
 
-
-mongo_client = MongoClient(
-    "mongodb+srv://abhishek:abcd1234@speer.qdpo3.mongodb.net/notes_db?retryWrites=true&w=majority&appName=speer")
+mongo_client = MongoClient(os.environ.get("mongo_url"))
 
 db = mongo_client.notes_db
 notes_collection = db.notes
 
-es_client = Elasticsearch(
-    [{"host": "localhost", "port": 9200, "scheme": "http"}])
+# es_client = Elasticsearch(
+#     [{"host": "localhost", "port": 9200, "scheme": "http"}])
 
 
-def index_note_to_es(note):
-    es_client.index(index="notes", id=str(note["_id"]), body=note)
+# def index_note_to_es(note):
+#     es_client.index(index="notes", id=str(note["_id"]), body=note)
 
 
-def delete_note_from_es(note_id):
-    es_client.delete(index="notes", id=str(note_id))
+# def delete_note_from_es(note_id):
+#     es_client.delete(index="notes", id=str(note_id))
 
 
 class noteListAPI(APIView):
@@ -48,7 +40,7 @@ class noteListAPI(APIView):
         for note in notes:
             note["_id"] = str(note["_id"])
 
-        return Response({"notes": notes, "user_id": user_id}, status=status.HTTP_201_CREATED)
+        return Response({"notes": notes, "user_id": user_id}, status=status.HTTP_200_OK)
 
     def post(self, request):
         user_id = str(request.user.id)
