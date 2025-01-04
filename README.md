@@ -139,12 +139,12 @@ This application uses Django's default throttling to limit the rate of requests:
 . UserRateThrottle: Limits authenticated users' requests.
 
 ### Technologies Used
-. Django: Web framework for building the API.
-. Django REST Framework: For building the REST API.
-. djangorestframework-simplejwt: For JWT authentication.
-. MongoDB Cloud: For storing CRUD data.
-. Elasticsearch: (Optional) For searching notes.
-. Python 3: Programming language.
+1. jango: Web framework for building the API.
+2. Django REST Framework: For building the REST API.
+3. djangorestframework-simplejwt: For JWT authentication.
+4. MongoDB Cloud: For storing CRUD data.
+5. Elasticsearch: (Optional) For searching notes.
+6. Python 3: Programming language.
 
 
 
