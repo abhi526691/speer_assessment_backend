@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from dotenv import load_dotenv
 from pymongo import MongoClient
-# from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch
 
 load_dotenv()
 
@@ -17,16 +17,16 @@ mongo_client = MongoClient(os.environ.get("mongo_url"))
 db = mongo_client.notes_db
 notes_collection = db.notes
 
-# es_client = Elasticsearch(
-#     [{"host": "localhost", "port": 9200, "scheme": "http"}])
+es_client = Elasticsearch(
+    [{"host": "localhost", "port": 9200, "scheme": "http"}])
 
 
-# def index_note_to_es(note):
-#     es_client.index(index="notes", id=str(note["_id"]), body=note)
+def index_note_to_es(note):
+    es_client.index(index="notes", id=str(note["_id"]), body=note)
 
 
-# def delete_note_from_es(note_id):
-#     es_client.delete(index="notes", id=str(note_id))
+def delete_note_from_es(note_id):
+    es_client.delete(index="notes", id=str(note_id))
 
 
 class noteListAPI(APIView):
