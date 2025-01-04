@@ -8,9 +8,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import signupSerializer
 from django.contrib.auth.models import User
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
 
 class signupAPI(APIView):
+    throttle_classes = [AnonRateThrottle]
+
     def post(self, request):
         serializer = signupSerializer(data=request.data)
         if serializer.is_valid():
@@ -27,6 +30,7 @@ class signupAPI(APIView):
 
 
 class loginAPI(APIView):
+    throttle_classes = [UserRateThrottle]
 
     def post(self, request):
         email = request.POST.get('email')
@@ -49,8 +53,3 @@ class loginAPI(APIView):
             return Response({
                 "error": "Invalid Credentials."
             }, status=status.HTTP_401_UNAUTHORIZED)
-
-
-class logoutAPI(APIView):
-    def post(self, request):
-        pass

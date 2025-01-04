@@ -103,6 +103,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+
+    # Throttling classes
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',  # For unauthenticated users
+        'rest_framework.throttling.UserRateThrottle',  # For authenticated users
+    ],
+
+    # Define throttle rates
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/min',  # 10 requests per minute for unauthenticated users
+        'user': '100/min',  # 100 requests per minute for authenticated users
+    }
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
