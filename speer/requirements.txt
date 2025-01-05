@@ -6,9 +6,13 @@ djangorestframework-simplejwt==5.3.1
 dnspython==2.7.0
 elastic-transport==8.15.1
 elasticsearch==8.17.0
+mongomock==4.3.0
+packaging==24.2
 PyJWT==2.10.1
 pymongo==4.10.1
 python-dotenv==1.0.1
+pytz==2024.2
+sentinels==1.0.0
 sqlparse==0.5.3
 tzdata==2024.2
 urllib3==2.3.0
