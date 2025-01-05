@@ -30,7 +30,7 @@ Follow the steps below to set up and run the application.
 First, clone the repository to your local machine:
 
 ```bash
-git clone [<repository-url>](https://github.com/abhi526691/speer_assessment_backend)
+git clone https://github.com/abhi526691/speer_assessment_backend
 cd speer_assessment_backend 
 ```
 
