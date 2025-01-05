@@ -8,7 +8,7 @@ This project is a Django-based API application that implements user authenticati
 - User registration and login with email and password.
 - CRUD functionality for notes (Create, Read, Update, Delete).
 - Notes are stored in MongoDB Cloud.
-- Search functionality for notes based on title or content.
+- Search functionality for notes based on title or content.(P.S. Elastic Search + indexing is preferred for document based database(mongodb) since document based can make searching slower
 - Throttling for rate limiting using Django's default throttling classes.
 
 ## Requirements
