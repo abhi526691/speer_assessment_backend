@@ -13,7 +13,6 @@ from elasticsearch import Elasticsearch
 load_dotenv()
 
 mongo_client = MongoClient(os.environ.get("mongo_url"))
-
 db = mongo_client.notes_db
 notes_collection = db.notes
 
@@ -66,7 +65,8 @@ class NoteDetailAPI(APIView):
 
     def get(self, request, note_id):
         user_id = str(request.user.id)
-        note = notes_collection.find_one({"_id": note_id, "user_id": user_id})
+        note = notes_collection.find_one(
+            {"_id": str(note_id), "user_id": user_id})
         if not note:
             return Response({
                 "error": "Note not found."
