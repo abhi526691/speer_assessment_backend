@@ -30,8 +30,8 @@ Follow the steps below to set up and run the application.
 First, clone the repository to your local machine:
 
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone [<repository-url>](https://github.com/abhi526691/speer_assessment_backend)
+cd speer_assessment_backend 
 ```
 
 ### 2. Create a virtual enviornment
@@ -58,7 +58,7 @@ Create a .env file in the root directory of the project. Add the following conte
 ```bash
 mongo_url=<your_mongodb_connection_url>
 ```
-You can get your MongoDB connection URL from MongoDB Atlas.
+You can get your MongoDB connection URL from <a href="https://www.mongodb.com/products/platform/atlas-database">MongoDB Atlas.</a>
 
 ### 5. Migrate the database
 
@@ -68,13 +68,21 @@ Django uses SQLite as the default database for user authentication data. Run the
 python manage.py migrate
 ```
 
-### 5. Run the server
+### 6. Run the server
 Start the Django development server:
 
 ```bash
 python manage.py runserver
 ```
 The application will be available at http://127.0.0.1:8000/.
+
+### 6. Test the Endpoints
+
+Django's default TestCase Library is used for testing the Endpoints. Simply run the below command to test the endpoints
+
+```bash
+python manage.py test
+```
 
 ### API Endpoints
 Authentication
@@ -87,6 +95,8 @@ Authentication
     "password": "Password123!"
     }
 ```
+Password must have at least 1 special character, 1 uppercase, and length must be greater than 10
+
 . POST /api/auth/login/: Login with email and password to get JWT tokens.
 Request body:
    ```bash
@@ -133,13 +143,15 @@ Request body:
 . GET /api/search/: Search for notes based on title or content.
 . Query parameter: q (search query).
 
+
+
 ### Throttling
 This application uses Django's default throttling to limit the rate of requests:
 . AnonRateThrottle: Limits unauthenticated users' requests.
 . UserRateThrottle: Limits authenticated users' requests.
 
 ### Technologies Used
-1. jango: Web framework for building the API.
+1. Django: Web framework for building the API.
 2. Django REST Framework: For building the REST API.
 3. djangorestframework-simplejwt: For JWT authentication.
 4. MongoDB Cloud: For storing CRUD data.
